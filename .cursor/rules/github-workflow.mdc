@@ -5,6 +5,8 @@ alwaysApply: true
 
 # GitHub Workflow (Issue → PR → Merge)
 
+Git and `gh` commands are **pre-approved** for this repo — see `.cursor/rules/git-allowed.mdc`. Use them directly to implement this workflow (create issues, branch, commit, push, open PRs, merge) without asking permission first.
+
 For **every change** to this repo:
 
 1. **Create a GitHub issue first** — pick the matching template type:

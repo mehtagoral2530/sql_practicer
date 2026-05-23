@@ -1,0 +1,42 @@
+---
+description: Pre-approved git and GitHub CLI commands for this repo
+alwaysApply: true
+---
+
+# Git & GitHub CLI — Pre-approved
+
+For **this repository**, the agent may run git and `gh` commands without asking for permission first. Follow `.cursor/rules/github-workflow.mdc` for branching, issues, and PRs.
+
+## Git commands (allowed)
+
+**Inspect**
+- `git status`, `git diff`, `git log`, `git show`, `git rev-parse`
+- `git branch`, `git remote`, `git tag`
+
+**Sync**
+- `git fetch`, `git pull`, `git push` (never force-push `main` unless the user explicitly asks)
+
+**Branch & worktree**
+- `git checkout`, `git switch`, `git merge`, `git rebase`
+- `git stash` (push/pop/list/apply/drop)
+- `git worktree add`, `git worktree list`, `git worktree remove`
+
+**Record changes**
+- `git add`, `git commit` (follow repo commit-message style; do not skip hooks unless the user asks)
+
+## GitHub CLI (allowed when `gh` is available)
+
+Use `gh` for issues, pull requests, checks, and releases instead of asking the user to run these manually:
+
+- `gh issue create`, `gh issue list`, `gh issue view`
+- `gh pr create`, `gh pr list`, `gh pr view`, `gh pr merge`, `gh pr checks`
+- `gh repo view`, `gh api` (when needed for GitHub REST)
+
+If `gh` is unavailable or unauthenticated, use the GitHub REST API with `git credential fill` or ask the user to authenticate.
+
+## Guardrails (still apply)
+
+- Do **not** force-push `main` or `master` unless the user explicitly requests it.
+- Do **not** skip hooks (`--no-verify`, etc.) unless the user explicitly requests it.
+- Do **not** run destructive git commands (`reset --hard`, `push --force` to shared branches) unless the user explicitly requests them.
+- Do **not** update git config.
