@@ -1,0 +1,38 @@
+---
+description: Pre-approved shell commands for package managers and Node tooling
+alwaysApply: true
+---
+
+# Shell — Pre-approved (npm, pip, npx)
+
+For **this repository**, the agent may run npm, pip, and npx commands without asking for permission first. Git and `gh` are covered separately in `.cursor/rules/git-allowed.mdc`.
+
+## npm (allowed)
+
+Run npm directly for dependency and script workflows:
+
+- `npm install`, `npm ci`, `npm update`, `npm uninstall` (when changing dependencies as part of the task)
+- `npm run` (any script defined in `package.json`)
+- `npm test`, `npm exec`, `npm run test`, `npm run build`, `npm run lint`, etc.
+- `npx` (see below)
+
+## pip / Python (allowed)
+
+Run pip for Python dependency and tooling workflows:
+
+- `pip install`, `pip install -r requirements.txt`, `pip uninstall` (when changing dependencies as part of the task)
+- `python3 -m pip install`, `python3 -m pip install -r requirements.txt`, and other `python3 -m pip` subcommands
+- `python3 -m pytest`, `python3 -m unittest`, and similar module invocations when running tests or scripts
+
+## npx / Node.js tooling (allowed)
+
+Use `npx` to invoke Node.js CLI tools without a global install:
+
+- `npx vitest`, `npx playwright`, `npx vite`, `npx eslint`, `npx prettier`, and similar project tooling
+- Any `npx` command that runs a dev, test, build, or lint tool for this repo
+
+## Guardrails (still apply)
+
+- Do **not** run delete/remove commands (`rm`, `git clean`, `docker compose down -v`, `docker rm`, etc.) unless the user explicitly requests them.
+- Do **not** run destructive system or container commands unless the user explicitly requests them.
+- Prefer repo scripts (`npm run …`) when they exist instead of ad-hoc equivalents.
