@@ -23,6 +23,8 @@ For **every change** to this repo:
 
 5. **Merge to `main`** after the change is verified (tests pass when applicable).
 
-6. **Do not force-push `main`**. Do not skip hooks unless the user asks.
+6. **One concern per PR.** Max ~300 lines changed when possible. Push and merge the PR before starting the next feature.
+
+7. **Do not force-push `main`**. Do not skip hooks unless the user asks.
 
 If `gh` is unavailable, use the GitHub REST API or ask the user to authenticate.
