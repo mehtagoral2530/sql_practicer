@@ -1,4 +1,4 @@
-.PHONY: up down dev test test-backend test-frontend smoke install reset
+.PHONY: up down dev test test-backend test-backend-unit test-frontend smoke install reset
 
 up:
 	docker compose up -d
@@ -25,6 +25,9 @@ dev:
 
 test-backend:
 	cd backend && python3 -m pytest -v
+
+test-backend-unit:
+	cd backend && SKIP_DB_TESTS=1 python3 -m pytest -v -m "not integration"
 
 test-frontend:
 	cd frontend && npm test
