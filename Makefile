@@ -35,6 +35,7 @@ test-frontend:
 test: up test-backend test-frontend
 
 smoke: up
+	npx playwright install chromium --with-deps 2>/dev/null || npx playwright install chromium
 	npx playwright test
 
 start:
