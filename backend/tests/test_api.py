@@ -21,11 +21,13 @@ def wait_for_dbs():
         return
     for _ in range(30):
         if _dbs_ready():
-            break
+            yield
+            return
         time.sleep(1)
     yield
 
 
+@pytest.mark.integration
 @pytest.mark.skipif(os.getenv("SKIP_DB_TESTS") == "1", reason="SKIP_DB_TESTS=1")
 class TestExecutorIntegration:
     @pytest.mark.parametrize("dialect", ["postgres", "mysql"])
@@ -40,7 +42,6 @@ class TestExecutorIntegration:
         assert rows[0][0] == 5
 
 
-@pytest.mark.skipif(os.getenv("SKIP_DB_TESTS") == "1", reason="SKIP_DB_TESTS=1")
 class TestAPI:
     def test_health(self):
         r = client.get("/api/health")
@@ -67,6 +68,10 @@ class TestAPI:
         assert data["error"]["line"] == 2
         assert "FROM" in data["error"]["fix"]
 
+
+@pytest.mark.integration
+@pytest.mark.skipif(os.getenv("SKIP_DB_TESTS") == "1", reason="SKIP_DB_TESTS=1")
+class TestAPIIntegration:
     @pytest.mark.parametrize("dialect", ["postgres", "mysql"])
     def test_run_lesson1_pass(self, dialect):
         if not check_db_health(dialect):
