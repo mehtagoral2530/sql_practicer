@@ -26,11 +26,3 @@ CREATE TABLE device_orders (
     unit_cost DECIMAL(10, 2) NOT NULL,
     order_date DATE NOT NULL
 );
-
-\i /docker-entrypoint-initdb.d/seed.sql
-
-CREATE USER learner_ro WITH PASSWORD 'learner';
-GRANT CONNECT ON DATABASE healthcare TO learner_ro;
-GRANT USAGE ON SCHEMA public TO learner_ro;
-GRANT SELECT ON ALL TABLES IN SCHEMA public TO learner_ro;
-ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO learner_ro;
