@@ -42,6 +42,7 @@ Open [http://localhost:5173](http://localhost:5173). The app loads lesson 1 with
 | `make test-backend` | Run full `pytest` in `backend/` (needs Docker DBs) |
 | `make test-backend-unit` | Run backend unit tests without Docker |
 | `make test-frontend` | Run `vitest run` in `frontend/` |
+| `make validate-lessons` | Run every lesson `solutionSql` on both dialects (requires `make up`) |
 | `make smoke` | `make up`, then Playwright end-to-end smoke tests |
 
 ## Database connection
@@ -92,6 +93,13 @@ make test-frontend
 make test
 ```
 
+**Lesson solution validator** (CI-friendly check that every official answer runs):
+
+```bash
+make up
+make validate-lessons
+```
+
 **End-to-end smoke** (starts backend + frontend via Playwright, runs browser tests):
 
 ```bash
@@ -118,6 +126,7 @@ Use this after setup or before a release:
 - [ ] `make test-backend-unit` — unit tests pass without Docker
 - [ ] `make test-backend` — all pytest tests pass (with Docker)
 - [ ] `make test-frontend` — all vitest tests pass
+- [ ] `make validate-lessons` — 25 lessons × 2 dialects OK
 - [ ] `make smoke` — 3 Playwright tests pass
 
 ## Lessons
