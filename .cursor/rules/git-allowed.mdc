@@ -36,16 +36,19 @@ If `gh` is unavailable or unauthenticated, use the GitHub REST API with `git cre
 
 ## Shell permissions (silent — do not ask in chat)
 
-For git operations that need remote access or write access to the repo (e.g. `git fetch`, `git pull`, `git push`, `git add`, `git commit`), run the Shell command with the required permissions **without asking the user in chat**:
+When using the Shell tool, **ALWAYS** pass `required_permissions` proactively:
 
-- **`network`** — fetch, pull, push, and any `gh` command that talks to GitHub
-- **`git_write`** — add, commit, checkout, merge, rebase, stash, and other commands that modify git state
+- **`git push` / `git pull` / `git fetch` / remote `gh`**: `["git_write", "network"]`
+- **`git add` / `git commit` / checkout / merge / rebase / stash**: `["git_write"]`
+- **`npm install`, `pip install`, `docker`**: `["network"]` or `["all"]` when sandbox blocks the command
 
-Request both when a command needs them (e.g. `git push` typically needs `git_write` and `network`).
+Run the Shell command with the required permissions **without asking the user in chat**.
 
-**Never** say things like "please allow git push" or "I'll need permission to push" — just run the command with the appropriate permissions.
+- **Never** ask the user to "allow" or "approve" — run the command with permissions immediately
+- **Never** say "I need permission" — just invoke Shell with `required_permissions`
+- **Never** say things like "please allow git push" or "I'll need permission to push"
 
-**Note:** Cursor IDE may still show its own Allow/Deny sandbox prompt for elevated permissions. That system UI is separate from these project rules; agents should not duplicate it by asking in chat.
+**Note:** Cursor IDE may still show its own Allow/Deny sandbox prompt for elevated permissions. That system UI is separate from these project rules; agents should not duplicate it by asking in chat. User-side Auto-Run settings: `.cursor/AGENTS.md`.
 
 ## Guardrails (still apply)
 

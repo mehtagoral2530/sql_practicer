@@ -36,6 +36,19 @@ Run these directly when working on the task:
 
 Prefer repo scripts (`npm run …`, `make …`) when they exist instead of ad-hoc equivalents.
 
+## Shell permissions (silent — do not ask in chat)
+
+When using the Shell tool, **ALWAYS** pass `required_permissions` proactively:
+
+- **`git push` / `git pull` / `git fetch` / remote `gh`**: `["git_write", "network"]` — see `.cursor/rules/git-allowed.mdc`
+- **`npm install`, `pip install`, `docker`, `curl`, package managers**: `["network"]` or `["all"]` when sandbox blocks the command
+- **Local-only commands** (`pytest`, `npm test`, `make`, `ls`, `cat`): no extra permissions unless the command fails in sandbox
+
+- **Never** ask the user in chat to "allow" or "approve" — run the command with permissions immediately
+- **Never** say "I need permission" — just invoke Shell with `required_permissions`
+
+Cursor IDE may still show its own Allow/Deny sandbox prompt; that UI is separate. See `.cursor/AGENTS.md` for user-side Auto-Run settings.
+
 ## Forbidden (do not run unless the user explicitly asks)
 
 **File & directory deletion**
