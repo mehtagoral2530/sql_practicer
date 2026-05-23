@@ -1,38 +1,62 @@
 ---
-description: Pre-approved shell commands for package managers and Node tooling
+description: Pre-approved shell commands for local development in this repo
 alwaysApply: true
 ---
 
-# Shell — Pre-approved (npm, pip, npx)
+# Shell — Pre-approved (development commands)
 
-For **this repository**, the agent may run npm, pip, and npx commands without asking for permission first. Git and `gh` are covered separately in `.cursor/rules/git-allowed.mdc`.
+For **this repository**, the agent may run shell commands needed for local development without asking for permission first. Git and `gh` are covered separately in `.cursor/rules/git-allowed.mdc`.
 
-## npm (allowed)
+## General (allowed)
 
-Run npm directly for dependency and script workflows:
+- `cd`, `pwd`, `ls`, `cat`, `head`, `tail`, `grep`, `find`, `which`, `echo`, `env`, `export`, `mkdir`, `cp`, `mv`, `touch`, `chmod`, `test`, `[`, `wc`, `sort`, `uniq`, `tee`, `xargs`, `sleep`, `date`, `printf`
+- Any command required to build, run, test, lint, debug, or inspect this repo
 
-- `npm install`, `npm ci`, `npm update`, `npm uninstall` (when changing dependencies as part of the task)
-- `npm run` (any script defined in `package.json`)
-- `npm test`, `npm exec`, `npm run test`, `npm run build`, `npm run lint`, etc.
-- `npx` (see below)
+## Development tooling (allowed)
 
-## pip / Python (allowed)
+Run these directly when working on the task:
 
-Run pip for Python dependency and tooling workflows:
+**Node / frontend**
+- `npm`, `npx`, `node`, `yarn`, `pnpm` (install, run scripts, test, build, lint, etc.)
 
-- `pip install`, `pip install -r requirements.txt`, `pip uninstall` (when changing dependencies as part of the task)
-- `python3 -m pip install`, `python3 -m pip install -r requirements.txt`, and other `python3 -m pip` subcommands
-- `python3 -m pytest`, `python3 -m unittest`, and similar module invocations when running tests or scripts
+**Python / backend**
+- `python`, `python3`, `pip`, `pip3`, `uv`, `uvicorn`, `pytest`, `python -m pytest`, `python -m unittest`, `python -m pip`
 
-## npx / Node.js tooling (allowed)
+**Containers & services**
+- `docker`, `docker compose` (up, build, logs, ps, exec, restart — **not** volume-wiping teardown; see forbidden)
+- `make` and repo `Makefile` targets
 
-Use `npx` to invoke Node.js CLI tools without a global install:
+**HTTP & networking**
+- `curl`, `wget`, `nc` (for health checks and API smoke tests)
 
-- `npx vitest`, `npx playwright`, `npx vite`, `npx eslint`, `npx prettier`, and similar project tooling
-- Any `npx` command that runs a dev, test, build, or lint tool for this repo
+**Other common dev CLIs**
+- `git` and `gh` — see `.cursor/rules/git-allowed.mdc`
+- `jq`, `sqlite3`, `psql`, `mysql` (read/query and non-destructive admin when needed for this repo)
+- `bash`, `sh`, `./scripts/…`, and project-specific CLIs invoked for development
 
-## Guardrails (still apply)
+Prefer repo scripts (`npm run …`, `make …`) when they exist instead of ad-hoc equivalents.
 
-- Do **not** run delete/remove commands (`rm`, `git clean`, `docker compose down -v`, `docker rm`, etc.) unless the user explicitly requests them.
-- Do **not** run destructive system or container commands unless the user explicitly requests them.
-- Prefer repo scripts (`npm run …`) when they exist instead of ad-hoc equivalents.
+## Forbidden (do not run unless the user explicitly asks)
+
+**File & directory deletion**
+- `rm`, `rmdir`, `unlink`
+- `git clean`
+- Anything that permanently deletes files or directories
+
+**Git history destruction**
+- `git reset --hard`
+- Force-push that destroys shared history (`git push --force`, `git push -f` to shared branches; see also `.cursor/rules/git-allowed.mdc`)
+
+**Container & volume wipe**
+- `docker compose down -v` (removes volumes)
+- `docker volume rm`, `docker system prune` (when it removes data), and similar volume/data-destructive Docker commands
+
+**Database data destruction**
+- SQL: `DROP`, `TRUNCATE`, `DELETE` without a scoped `WHERE` when it wipes tables or large datasets
+- Destructive schema migrations unless the user explicitly requests them
+
+**Other destructive operations**
+- Commands that permanently delete or irreversibly destroy data, credentials, or shared state
+- Skipping safety hooks (`--no-verify`, etc.) unless the user explicitly requests it
+
+When unsure whether a command is destructive, ask before running it.
