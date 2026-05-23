@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Git & GitHub CLI — Pre-approved
 
-For **this repository**, the agent may run git and `gh` commands without asking for permission first. Follow `.cursor/rules/github-workflow.mdc` for branching, issues, and PRs. npm, pip, and npx are pre-approved in `.cursor/rules/shell-allowed.mdc`.
+For **this repository**, the agent may run git and `gh` commands without asking for permission first. Follow `.cursor/rules/github-workflow.mdc` for branching, issues, and PRs. General development shell commands are pre-approved in `.cursor/rules/shell-allowed.mdc` (destructive git commands listed there remain forbidden unless the user explicitly asks).
 
 ## Git commands (allowed)
 

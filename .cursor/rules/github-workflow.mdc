@@ -5,7 +5,7 @@ alwaysApply: true
 
 # GitHub Workflow (Issue → PR → Merge)
 
-Git and `gh` commands are **pre-approved** for this repo — see `.cursor/rules/git-allowed.mdc`. npm, pip, and npx are pre-approved in `.cursor/rules/shell-allowed.mdc`. Use them directly to implement this workflow (create issues, branch, commit, push, open PRs, merge) without asking permission first.
+Git and `gh` commands are **pre-approved** for this repo — see `.cursor/rules/git-allowed.mdc`. Development shell commands are pre-approved in `.cursor/rules/shell-allowed.mdc` (delete/remove and other destructive commands remain forbidden unless the user explicitly asks). Use them directly to implement this workflow (create issues, branch, commit, push, open PRs, merge) without asking permission first.
 
 For **every change** to this repo:
 
