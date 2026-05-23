@@ -14,6 +14,12 @@ All changes follow **issue → branch → PR → merge**.
 4. Open a PR referencing the issue (`Closes #123`).
 5. Merge to `main` after review and checks pass.
 
+## Incremental PRs
+
+- **One concern per PR** — do not batch unrelated changes.
+- **Keep diffs small** — aim for ~300 lines changed or fewer when possible.
+- **Push before the next feature** — open and merge the current PR before starting the next chunk of work.
+
 ## Branch naming
 
 - `cursor/fix-error-line-highlight`
