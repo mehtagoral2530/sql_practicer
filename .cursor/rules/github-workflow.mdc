@@ -1,0 +1,28 @@
+---
+description: GitHub issue → PR → merge workflow for all repo changes
+alwaysApply: true
+---
+
+# GitHub Workflow (Issue → PR → Merge)
+
+For **every change** to this repo:
+
+1. **Create a GitHub issue first** — pick the matching template type:
+   - `bug` — fixes, errors, broken behavior
+   - `feature` — new capability or lesson content
+   - `chore` — tooling, docs, CI, refactors with no user-facing change
+
+2. **Branch from `main`** — use prefix `cursor/` (e.g. `cursor/12-fix-error-line`).
+
+3. **Implement on that branch only** — no direct commits to `main`.
+
+4. **Open a PR** that:
+   - Title: concise summary
+   - Body: `Closes #N`, what changed, how to test
+   - Base: `main`
+
+5. **Merge to `main`** after the change is verified (tests pass when applicable).
+
+6. **Do not force-push `main`**. Do not skip hooks unless the user asks.
+
+If `gh` is unavailable, use the GitHub REST API or ask the user to authenticate.
