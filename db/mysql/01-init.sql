@@ -29,9 +29,3 @@ CREATE TABLE device_orders (
     order_date DATE NOT NULL,
     FOREIGN KEY (patient_id) REFERENCES patients(patient_id)
 );
-
-SOURCE /docker-entrypoint-initdb.d/seed.sql;
-
-CREATE USER IF NOT EXISTS 'learner_ro'@'%' IDENTIFIED BY 'learner';
-GRANT SELECT ON healthcare.* TO 'learner_ro'@'%';
-FLUSH PRIVILEGES;
