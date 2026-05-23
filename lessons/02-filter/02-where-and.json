@@ -1,0 +1,13 @@
+{
+  "id": "02-02-where-and",
+  "title": "Combine filters with AND",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "Find non-profit hospitals in California. Return name and org_type.",
+  "schemaTables": ["hospitals"],
+  "starterSql": "SELECT name, org_type\nFROM hospitals\nWHERE state = 'CA'\n",
+  "hints": ["AND means both conditions must be true.", "org_type values: 'for_profit' or 'non_profit'."],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT name, org_type FROM hospitals WHERE state = 'CA' AND org_type = 'non_profit'"
+  }
+}

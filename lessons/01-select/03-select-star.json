@@ -1,0 +1,13 @@
+{
+  "id": "01-03-select-star",
+  "title": "Select all columns with *",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "Return every column from the patients table using SELECT *.",
+  "schemaTables": ["patients"],
+  "starterSql": "SELECT \nFROM patients\n",
+  "hints": ["* means all columns.", "Useful to explore a table; in reports prefer naming columns."],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT * FROM patients"
+  }
+}

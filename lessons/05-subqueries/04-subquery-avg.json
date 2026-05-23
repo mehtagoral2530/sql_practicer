@@ -1,0 +1,13 @@
+{
+  "id": "05-04-subquery-avg",
+  "title": "Compare to average",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "Find device orders with unit_cost above the average. Return device_name and unit_cost.",
+  "schemaTables": ["device_orders"],
+  "starterSql": "SELECT device_name, unit_cost\nFROM device_orders\n",
+  "hints": ["WHERE unit_cost > (SELECT AVG(unit_cost) FROM device_orders)", "Subquery in WHERE must return one value."],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT device_name, unit_cost FROM device_orders WHERE unit_cost > (SELECT AVG(unit_cost) FROM device_orders)"
+  }
+}

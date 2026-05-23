@@ -1,0 +1,13 @@
+{
+  "id": "04-04-join-filter",
+  "title": "Filter joined data",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "List patient_id and hospital name for patients at for-profit hospitals only.",
+  "schemaTables": ["patients", "hospitals"],
+  "starterSql": "SELECT patients.patient_id, hospitals.name\nFROM patients\nJOIN hospitals ON patients.hospital_id = hospitals.hospital_id\n",
+  "hints": ["WHERE after JOIN filters the combined result.", "Filter on hospitals.org_type = 'for_profit'."],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT patients.patient_id, hospitals.name FROM patients JOIN hospitals ON patients.hospital_id = hospitals.hospital_id WHERE hospitals.org_type = 'for_profit'"
+  }
+}

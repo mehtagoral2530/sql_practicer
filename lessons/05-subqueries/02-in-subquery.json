@@ -1,0 +1,13 @@
+{
+  "id": "05-02-in-subquery",
+  "title": "Filter with IN subquery",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "Find patients who have at least one device order. Return patient_id from patients WHERE patient_id IN (subquery on device_orders).",
+  "schemaTables": ["patients", "device_orders"],
+  "starterSql": "SELECT patient_id\nFROM patients\n",
+  "hints": ["IN checks if a value appears in a subquery list.", "SELECT DISTINCT patient_id FROM device_orders"],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT patient_id FROM patients WHERE patient_id IN (SELECT DISTINCT patient_id FROM device_orders)"
+  }
+}

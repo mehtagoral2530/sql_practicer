@@ -1,0 +1,13 @@
+{
+  "id": "05-05-correlated-intro",
+  "title": "Subquery with GROUP BY filter",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "Find hospitals that have more than 2 patients. Return hospital name and patient_count using JOIN + GROUP BY + HAVING.",
+  "schemaTables": ["hospitals", "patients"],
+  "starterSql": "SELECT hospitals.name, COUNT(*) AS patient_count\nFROM hospitals\nJOIN patients ON hospitals.hospital_id = patients.hospital_id\nGROUP BY hospitals.name\n",
+  "hints": ["HAVING COUNT(*) > 2 filters groups after the join.", "This pattern replaces many correlated subquery use cases."],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT hospitals.name, COUNT(*) AS patient_count FROM hospitals JOIN patients ON hospitals.hospital_id = patients.hospital_id GROUP BY hospitals.name HAVING COUNT(*) > 2"
+  }
+}

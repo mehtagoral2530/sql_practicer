@@ -1,0 +1,13 @@
+{
+  "id": "03-05-group-by-count",
+  "title": "COUNT per group",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "Count encounters per department. Return department and visit_count.",
+  "schemaTables": ["encounters"],
+  "starterSql": "SELECT department\nFROM encounters\n",
+  "hints": ["COUNT(*) with GROUP BY gives counts per group."],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT department, COUNT(*) AS visit_count FROM encounters GROUP BY department"
+  }
+}

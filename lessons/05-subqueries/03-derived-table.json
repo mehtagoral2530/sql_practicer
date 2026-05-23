@@ -1,0 +1,13 @@
+{
+  "id": "05-03-derived-table",
+  "title": "Subquery in FROM",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "Count patients per hospital_id using a subquery in FROM (derived table). Return hospital_id and patient_count.",
+  "schemaTables": ["patients"],
+  "starterSql": "SELECT hospital_id, patient_count\nFROM (\n  SELECT hospital_id, COUNT(*) AS patient_count\n  FROM patients\n  GROUP BY hospital_id\n) AS counts\n",
+  "hints": ["Subquery in FROM must have an alias (AS counts).", "Outer SELECT reads from the inner result."],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT hospital_id, patient_count FROM (SELECT hospital_id, COUNT(*) AS patient_count FROM patients GROUP BY hospital_id) AS counts"
+  }
+}

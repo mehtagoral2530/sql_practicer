@@ -1,0 +1,13 @@
+{
+  "id": "03-03-avg",
+  "title": "Average with AVG",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "What is the average age of patients? Return avg_age.",
+  "schemaTables": ["patients"],
+  "starterSql": "SELECT \nFROM patients\n",
+  "hints": ["AVG computes the mean of a numeric column."],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT AVG(age) AS avg_age FROM patients"
+  }
+}

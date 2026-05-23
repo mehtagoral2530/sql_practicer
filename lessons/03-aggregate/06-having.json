@@ -1,0 +1,13 @@
+{
+  "id": "03-06-having",
+  "title": "Filter groups with HAVING",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "Find departments with more than 2 encounters. Return department and visit_count.",
+  "schemaTables": ["encounters"],
+  "starterSql": "SELECT department, COUNT(*) AS visit_count\nFROM encounters\nGROUP BY department\n",
+  "hints": ["WHERE filters rows; HAVING filters groups after GROUP BY.", "Use HAVING with aggregate conditions like COUNT(*) > 2."],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT department, COUNT(*) AS visit_count FROM encounters GROUP BY department HAVING COUNT(*) > 2"
+  }
+}

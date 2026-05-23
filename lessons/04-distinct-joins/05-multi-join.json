@@ -1,0 +1,13 @@
+{
+  "id": "04-05-multi-join",
+  "title": "Join three tables",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "Show device_name, patient_id, and hospital name for each device order. Join device_orders → patients → hospitals.",
+  "schemaTables": ["device_orders", "patients", "hospitals"],
+  "starterSql": "SELECT device_orders.device_name, device_orders.patient_id\nFROM device_orders\n",
+  "hints": ["Chain JOINs: device_orders to patients, then patients to hospitals."],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT device_orders.device_name, device_orders.patient_id, hospitals.name FROM device_orders JOIN patients ON device_orders.patient_id = patients.patient_id JOIN hospitals ON patients.hospital_id = hospitals.hospital_id"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "03-02-sum",
+  "title": "Add up values with SUM",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "What is the total unit_cost of all device orders? Return total_cost.",
+  "schemaTables": ["device_orders"],
+  "starterSql": "SELECT \nFROM device_orders\n",
+  "hints": ["SUM adds up numeric column values.", "Alias the result: AS total_cost."],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT SUM(unit_cost) AS total_cost FROM device_orders"
+  }
+}

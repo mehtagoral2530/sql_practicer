@@ -1,0 +1,13 @@
+{
+  "id": "04-01-distinct",
+  "title": "Unique values with DISTINCT",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "List each unique department from encounters (no duplicates). Return one column: department.",
+  "schemaTables": ["encounters"],
+  "starterSql": "SELECT department\nFROM encounters\n",
+  "hints": ["DISTINCT removes duplicate rows.", "SELECT DISTINCT column FROM table;"],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT DISTINCT department FROM encounters"
+  }
+}

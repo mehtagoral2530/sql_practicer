@@ -1,0 +1,14 @@
+{
+  "id": "02-05-limit",
+  "title": "Limit rows with LIMIT",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "Show the top 3 most expensive device orders: device_name, unit_cost. Sort highest first, then LIMIT 3.",
+  "schemaTables": ["device_orders"],
+  "starterSql": "SELECT device_name, unit_cost\nFROM device_orders\nORDER BY unit_cost DESC\n",
+  "hints": ["LIMIT goes at the end.", "ORDER BY first so LIMIT keeps the right rows."],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT device_name, unit_cost FROM device_orders ORDER BY unit_cost DESC LIMIT 3",
+    "orderSensitive": true
+  }
+}

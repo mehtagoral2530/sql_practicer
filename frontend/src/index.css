@@ -1,0 +1,174 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f6f7f9;
+  color: #1a1a1a;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.header-controls {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.db-dot.ok { color: #0a7; }
+.db-dot.bad { color: #c33; }
+
+.main {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 0;
+  min-height: calc(100vh - 52px);
+}
+
+.lesson-panel {
+  padding: 20px;
+  background: #fff;
+  border-right: 1px solid #e0e0e0;
+  overflow-y: auto;
+}
+
+.lesson-module {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #666;
+  margin: 0 0 4px;
+}
+
+.lesson-prompt {
+  line-height: 1.5;
+}
+
+.schema-list {
+  list-style: none;
+  padding: 0;
+  font-size: 0.85rem;
+}
+
+.schema-list li {
+  margin-bottom: 8px;
+}
+
+.schema-cols {
+  display: block;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.workspace {
+  padding: 20px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+button {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button[data-testid="run-button"] {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+
+.btn-next {
+  background: #0a7;
+  color: #fff;
+  border-color: #0a7;
+}
+
+.btn-skip {
+  background: transparent;
+}
+
+.feedback {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.feedback-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.feedback-success {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+.feedback h3 { margin: 0 0 8px; }
+.feedback h4 { margin: 12px 0 4px; font-size: 0.85rem; }
+.feedback-line { margin: 0 0 8px; }
+
+.results-scroll {
+  overflow: auto;
+  max-height: 320px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+th, td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background: #f9fafb;
+  position: sticky;
+  top: 0;
+}
+
+.cm-error-line {
+  background: rgba(220, 38, 38, 0.12) !important;
+}
+
+.dialect-note {
+  background: #eff6ff;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}

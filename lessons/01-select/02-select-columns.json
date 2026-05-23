@@ -1,0 +1,13 @@
+{
+  "id": "01-02-select-columns",
+  "title": "Select multiple columns",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "Return name and org_type from hospitals. These show whether each hospital is for-profit or non-profit.",
+  "schemaTables": ["hospitals"],
+  "starterSql": "SELECT name\nFROM hospitals\n",
+  "hints": ["Separate column names with commas.", "Order of columns = order in your result."],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT name, org_type FROM hospitals"
+  }
+}

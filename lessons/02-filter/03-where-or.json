@@ -1,0 +1,13 @@
+{
+  "id": "02-03-where-or",
+  "title": "Combine filters with OR",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "Find hospitals in NY or TX. Return name and state.",
+  "schemaTables": ["hospitals"],
+  "starterSql": "SELECT name, state\nFROM hospitals\n",
+  "hints": ["OR means at least one condition is true.", "Use parentheses if mixing AND and OR."],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT name, state FROM hospitals WHERE state = 'NY' OR state = 'TX'"
+  }
+}
