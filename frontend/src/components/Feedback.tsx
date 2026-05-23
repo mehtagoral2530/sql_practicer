@@ -1,13 +1,13 @@
 import type { SqlError } from "../types";
 
 interface Props {
-  error: SqlError | null;
+  error?: SqlError | null;
   success?: boolean;
   passed?: boolean;
   feedback?: string | null;
 }
 
-export function Feedback({ error, success, passed, feedback }: Props) {
+export function Feedback({ error = null, success, passed, feedback }: Props) {
   if (error) {
     return (
       <div className="feedback feedback-error" data-testid="feedback-error">
@@ -24,7 +24,7 @@ export function Feedback({ error, success, passed, feedback }: Props) {
           <h4>Try this</h4>
           <p>{error.fix}</p>
         </section>
-        {error.suggestions.length > 0 && (
+        {error.suggestions?.length > 0 && (
           <details>
             <summary>Learn more</summary>
             <ul>

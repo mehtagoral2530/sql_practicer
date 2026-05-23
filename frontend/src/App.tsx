@@ -51,6 +51,12 @@ export default function App() {
     saveProgress(lessonId, dialect);
   }, [lessonId, dialect]);
 
+  const handleSqlChange = useCallback((nextSql: string) => {
+    setSql(nextSql);
+    setError(null);
+    setResult(null);
+  }, []);
+
   const handleRun = useCallback(async () => {
     setRunning(true);
     setError(null);
@@ -61,6 +67,17 @@ export default function App() {
       if (!res.ok && res.error) setError(res.error);
     } catch (e) {
       console.error(e);
+      setError({
+        line: 1,
+        column: null,
+        severity: "error",
+        title: "Could not reach the server",
+        why: "The app could not talk to the backend API.",
+        fix: "Start the backend on port 8000, then run your query again.",
+        suggestions: [],
+        source: "client",
+        rawMessage: e instanceof Error ? e.message : "Network error",
+      });
     } finally {
       setRunning(false);
     }
@@ -119,7 +136,7 @@ export default function App() {
       <main className="main">
         {lesson && <LessonPanel lesson={lesson} dialect={dialect} />}
         <section className="workspace">
-          <SqlEditor value={sql} onChange={setSql} errorLine={error?.line} />
+          <SqlEditor value={sql} onChange={handleSqlChange} errorLine={error?.line} />
           <div className="toolbar">
             <button onClick={handleRun} disabled={running} data-testid="run-button">
               {running ? "Running…" : "Run (Ctrl+Enter)"}
@@ -133,7 +150,7 @@ export default function App() {
                 Next lesson →
               </button>
             )}
-            {nextLesson && (
+            {nextLesson && !(result?.ok && result.passed) && (
               <button
                 className="btn-skip"
                 onClick={() => setLessonId(nextLesson.id)}
