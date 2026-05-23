@@ -1,0 +1,13 @@
+{
+  "id": "01-04-alias",
+  "title": "Rename columns with AS",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "Select name from hospitals but show the column header as hospital_name (use AS).",
+  "schemaTables": ["hospitals"],
+  "starterSql": "SELECT name\nFROM hospitals\n",
+  "hints": ["AS gives a friendlier column name in results.", "Example: SELECT name AS hospital_name"],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT name AS hospital_name FROM hospitals"
+  }
+}

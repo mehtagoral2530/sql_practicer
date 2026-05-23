@@ -1,0 +1,13 @@
+{
+  "id": "04-03-inner-join",
+  "title": "Combine tables with JOIN",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "Show each patient's id and their hospital name. Join patients to hospitals on hospital_id.",
+  "schemaTables": ["patients", "hospitals"],
+  "starterSql": "SELECT patients.patient_id, hospitals.name\nFROM patients\n",
+  "hints": ["JOIN links rows where keys match.", "ON patients.hospital_id = hospitals.hospital_id"],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT patients.patient_id, hospitals.name FROM patients JOIN hospitals ON patients.hospital_id = hospitals.hospital_id"
+  }
+}

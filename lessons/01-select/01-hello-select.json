@@ -1,0 +1,13 @@
+{
+  "id": "01-01-hello-select",
+  "title": "Your first SELECT",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "Select the name column from the hospitals table. This returns one column of hospital names.",
+  "schemaTables": ["hospitals"],
+  "starterSql": "SELECT name\nFROM hospitals\n",
+  "hints": ["SELECT picks which columns to show.", "FROM tells SQL which table to read."],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT name FROM hospitals"
+  }
+}

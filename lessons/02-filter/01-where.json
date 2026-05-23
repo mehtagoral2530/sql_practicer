@@ -1,0 +1,13 @@
+{
+  "id": "02-01-where",
+  "title": "Filter rows with WHERE",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "List name and state for hospitals in California (state = 'CA').",
+  "schemaTables": ["hospitals"],
+  "starterSql": "SELECT name, state\nFROM hospitals\n",
+  "hints": ["WHERE filters rows after FROM.", "Text values use single quotes: 'CA'."],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT name, state FROM hospitals WHERE state = 'CA'"
+  }
+}

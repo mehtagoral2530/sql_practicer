@@ -1,0 +1,13 @@
+{
+  "id": "03-01-count",
+  "title": "Count rows with COUNT(*)",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "How many patients are in the database? Return a single number as patient_count (use COUNT and AS).",
+  "schemaTables": ["patients"],
+  "starterSql": "SELECT \nFROM patients\n",
+  "hints": ["COUNT(*) counts all rows.", "Without GROUP BY you get one summary row."],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT COUNT(*) AS patient_count FROM patients"
+  }
+}

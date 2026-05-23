@@ -1,0 +1,13 @@
+{
+  "id": "05-01-scalar-subquery",
+  "title": "Subquery in SELECT",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "Select name from hospitals and add a column total_hospitals that shows how many hospitals exist (use a subquery with COUNT).",
+  "schemaTables": ["hospitals"],
+  "starterSql": "SELECT name\nFROM hospitals\n",
+  "hints": ["A subquery in SELECT returns one value per row.", "(SELECT COUNT(*) FROM hospitals) AS total_hospitals"],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT name, (SELECT COUNT(*) FROM hospitals) AS total_hospitals FROM hospitals"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "03-04-group-by",
+  "title": "Group rows with GROUP BY",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "For each insurance_type, show the average age. Return insurance_type and avg_age.",
+  "schemaTables": ["patients"],
+  "starterSql": "SELECT insurance_type, AVG(age)\nFROM patients\n",
+  "hints": ["GROUP BY splits rows into groups.", "Every non-aggregated SELECT column must be in GROUP BY."],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT insurance_type, AVG(age) AS avg_age FROM patients GROUP BY insurance_type"
+  }
+}

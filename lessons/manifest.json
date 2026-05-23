@@ -1,0 +1,29 @@
+{
+  "lessons": [
+    {"id": "01-01-hello-select", "module": "1 — SELECT", "file": "01-select/01-hello-select.json"},
+    {"id": "01-02-select-columns", "module": "1 — SELECT", "file": "01-select/02-select-columns.json"},
+    {"id": "01-03-select-star", "module": "1 — SELECT", "file": "01-select/03-select-star.json"},
+    {"id": "01-04-alias", "module": "1 — SELECT", "file": "01-select/04-alias.json"},
+    {"id": "02-01-where", "module": "2 — FILTER & SORT", "file": "02-filter/01-where.json"},
+    {"id": "02-02-where-and", "module": "2 — FILTER & SORT", "file": "02-filter/02-where-and.json"},
+    {"id": "02-03-where-or", "module": "2 — FILTER & SORT", "file": "02-filter/03-where-or.json"},
+    {"id": "02-04-order-by", "module": "2 — FILTER & SORT", "file": "02-filter/04-order-by.json"},
+    {"id": "02-05-limit", "module": "2 — FILTER & SORT", "file": "02-filter/05-limit.json"},
+    {"id": "03-01-count", "module": "3 — AGGREGATE", "file": "03-aggregate/01-count.json"},
+    {"id": "03-02-sum", "module": "3 — AGGREGATE", "file": "03-aggregate/02-sum.json"},
+    {"id": "03-03-avg", "module": "3 — AGGREGATE", "file": "03-aggregate/03-avg.json"},
+    {"id": "03-04-group-by", "module": "3 — AGGREGATE", "file": "03-aggregate/04-group-by.json"},
+    {"id": "03-05-group-by-count", "module": "3 — AGGREGATE", "file": "03-aggregate/05-group-by-count.json"},
+    {"id": "03-06-having", "module": "3 — AGGREGATE", "file": "03-aggregate/06-having.json"},
+    {"id": "04-01-distinct", "module": "4 — DISTINCT & JOINS", "file": "04-distinct-joins/01-distinct.json"},
+    {"id": "04-02-distinct-count", "module": "4 — DISTINCT & JOINS", "file": "04-distinct-joins/02-distinct-count.json"},
+    {"id": "04-03-inner-join", "module": "4 — DISTINCT & JOINS", "file": "04-distinct-joins/03-inner-join.json"},
+    {"id": "04-04-join-filter", "module": "4 — DISTINCT & JOINS", "file": "04-distinct-joins/04-join-filter.json"},
+    {"id": "04-05-multi-join", "module": "4 — DISTINCT & JOINS", "file": "04-distinct-joins/05-multi-join.json"},
+    {"id": "05-01-scalar-subquery", "module": "5 — SUBQUERIES", "file": "05-subqueries/01-scalar-subquery.json"},
+    {"id": "05-02-in-subquery", "module": "5 — SUBQUERIES", "file": "05-subqueries/02-in-subquery.json"},
+    {"id": "05-03-derived-table", "module": "5 — SUBQUERIES", "file": "05-subqueries/03-derived-table.json"},
+    {"id": "05-04-subquery-avg", "module": "5 — SUBQUERIES", "file": "05-subqueries/04-subquery-avg.json"},
+    {"id": "05-05-correlated-intro", "module": "5 — SUBQUERIES", "file": "05-subqueries/05-correlated-intro.json"}
+  ]
+}

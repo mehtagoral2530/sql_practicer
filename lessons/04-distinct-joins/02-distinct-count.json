@@ -1,0 +1,13 @@
+{
+  "id": "04-02-distinct-count",
+  "title": "Count unique values",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "How many different device names exist? Return unique_device_count.",
+  "schemaTables": ["device_orders"],
+  "starterSql": "SELECT \nFROM device_orders\n",
+  "hints": ["COUNT(DISTINCT column) counts unique values."],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT COUNT(DISTINCT device_name) AS unique_device_count FROM device_orders"
+  }
+}

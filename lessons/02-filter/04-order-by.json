@@ -1,0 +1,14 @@
+{
+  "id": "02-04-order-by",
+  "title": "Sort with ORDER BY",
+  "dialectNotes": {"postgres": null, "mysql": null},
+  "prompt": "Return device_name and unit_cost from device_orders, highest cost first (use ORDER BY ... DESC).",
+  "schemaTables": ["device_orders"],
+  "starterSql": "SELECT device_name, unit_cost\nFROM device_orders\n",
+  "hints": ["ORDER BY sorts rows after SELECT.", "DESC = descending (highest first). ASC = ascending."],
+  "validation": {
+    "type": "result_match",
+    "solutionSql": "SELECT device_name, unit_cost FROM device_orders ORDER BY unit_cost DESC",
+    "orderSensitive": true
+  }
+}
