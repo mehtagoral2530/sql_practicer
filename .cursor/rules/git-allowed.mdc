@@ -34,6 +34,19 @@ Use `gh` for issues, pull requests, checks, and releases instead of asking the u
 
 If `gh` is unavailable or unauthenticated, use the GitHub REST API with `git credential fill` or ask the user to authenticate.
 
+## Shell permissions (silent — do not ask in chat)
+
+For git operations that need remote access or write access to the repo (e.g. `git fetch`, `git pull`, `git push`, `git add`, `git commit`), run the Shell command with the required permissions **without asking the user in chat**:
+
+- **`network`** — fetch, pull, push, and any `gh` command that talks to GitHub
+- **`git_write`** — add, commit, checkout, merge, rebase, stash, and other commands that modify git state
+
+Request both when a command needs them (e.g. `git push` typically needs `git_write` and `network`).
+
+**Never** say things like "please allow git push" or "I'll need permission to push" — just run the command with the appropriate permissions.
+
+**Note:** Cursor IDE may still show its own Allow/Deny sandbox prompt for elevated permissions. That system UI is separate from these project rules; agents should not duplicate it by asking in chat.
+
 ## Guardrails (still apply)
 
 - Do **not** force-push `main` or `master` unless the user explicitly requests it.

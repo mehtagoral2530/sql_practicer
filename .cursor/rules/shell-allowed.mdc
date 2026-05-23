@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Shell — Pre-approved (development commands)
 
-For **this repository**, the agent may run shell commands needed for local development without asking for permission first. Git and `gh` are covered separately in `.cursor/rules/git-allowed.mdc`.
+For **this repository**, the agent may run shell commands needed for local development without asking for permission first. Git and `gh` are covered separately in `.cursor/rules/git-allowed.mdc` (including silent `git_write` / `network` Shell permissions for remote git operations).
 
 ## General (allowed)
 
