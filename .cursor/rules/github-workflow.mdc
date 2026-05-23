@@ -5,6 +5,19 @@ alwaysApply: true
 
 # GitHub Workflow (Issue → PR → Merge)
 
+## Critical: Shell permissions — never ask in chat
+
+When using the Shell tool, **ALWAYS** pass `required_permissions` proactively:
+
+- `git push` / `git pull` / `git fetch` / remote `gh`: `["git_write", "network"]`
+- `npm install`, `pip install`, `docker`: `["network"]` or `["all"]`
+- **Never** ask the user in chat to "allow" or "approve" — run the command with permissions immediately
+- **Never** say "I need permission" — just invoke Shell with `required_permissions`
+
+Cursor IDE may still show its own Allow/Deny sandbox prompt; that UI is separate from these rules. See `.cursor/AGENTS.md` for user-side Auto-Run settings.
+
+---
+
 Git and `gh` commands are **pre-approved** for this repo — see `.cursor/rules/git-allowed.mdc`. Development shell commands are pre-approved in `.cursor/rules/shell-allowed.mdc` (delete/remove and other destructive commands remain forbidden unless the user explicitly asks). Use them directly to implement this workflow (create issues, branch, commit, push, open PRs, merge) without asking permission first.
 
 For **every change** to this repo:
