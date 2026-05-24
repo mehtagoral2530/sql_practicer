@@ -9,7 +9,8 @@ All changes follow **issue → branch → PR → merge**.
 3. Make changes and run tests when relevant:
    ```bash
    make up
-   make test
+   make test          # backend + frontend + lesson validator
+   make smoke         # optional Playwright e2e
    ```
 4. Open a PR referencing the issue (`Closes #123`).
 5. Merge to `main` after review and checks pass.
