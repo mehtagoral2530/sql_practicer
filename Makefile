@@ -1,4 +1,4 @@
-.PHONY: up down dev test test-backend test-backend-unit test-frontend smoke install reset
+.PHONY: up down dev test test-backend test-backend-unit test-frontend validate-lessons smoke install reset
 
 up:
 	docker compose up -d
@@ -32,9 +32,13 @@ test-backend-unit:
 test-frontend:
 	cd frontend && npm test
 
-test: up test-backend test-frontend
+test: up test-backend test-frontend validate-lessons
+
+validate-lessons:
+	cd backend && python3 scripts/validate_lessons.py
 
 smoke: up
+	npx playwright install chromium --with-deps 2>/dev/null || npx playwright install chromium
 	npx playwright test
 
 start:
